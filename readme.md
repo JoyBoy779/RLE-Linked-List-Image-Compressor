@@ -2,28 +2,27 @@
 
 ## Project Overview
 
-This project presents a robust solution for grayscale image compression built on core Data Structures and Algorithms principles. It uses a Run-Length Encoding (RLE) scheme with singly linked lists to encode only the black segments of an image, delivering significant storage efficiency. The implementation serves as a stable platform for complex image manipulation, fully leveraging data structure operations.
+This project presents a robust solution for grayscale image compression. Using Run-Length Encoding (RLE) and singly linked lists, it stores only the black pixel runs, delivering significant storage efficiency. The algorithms convert dense O(N^2) pixel data into a sparse, compact format, support safe logical image operations, and robustly manage memory to prevent leaks.
 
-## Key Features & CV Validation
+## Key Features
 
-| Feature             | Technical Implementation                                                                                                 | CV Claim Supported                                                                                   |
-|---------------------|-------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
-| Efficient Encoding  | Uses a singly linked list per row to store only the start and end indices of black pixel runs.                          | Engineered a grayscale image compression system using linked list encoding.                          |
-| Data Transformation | Constructor algorithm analyzes O(N^2) pixel data, identifies contiguous runs, converts dense data to sparse format.      | Developed algorithms for pixel grouping and storage transformation.                                  |
-| Image Manipulation  | Stable AND, XOR, and INVERT methods decompress rows, apply boolean logic, and re-compress the result.                   | Applied boolean operations for image transformation and validation.                                  |
-| Memory Management   | Explicit cleanup_row and destructor logic prevent memory leaks, ensuring efficient dynamic memory usage.                 | Ensuring accuracy while minimizing memory overhead.                                                  |
+| Feature             | Description                                                                                         |
+|---------------------|-----------------------------------------------------------------------------------------------------|
+| Efficient Encoding  | Compresses each image row into singly linked lists, storing only start and end indices of black runs.|
+| Data Transformation | Converts dense pixel grids into sparse, compact linked list structures.                              |
+| Image Manipulation  | Supports AND, XOR, INVERT; decompresses, applies boolean logic, then recompresses the result.        |
+| Memory Management   | Explicit cleanup and destructor routines prevent leaks and optimise dynamic memory usage.             |
 
 ## Core Concepts and Data Structures
 
 - **Run-Length Encoding (RLE):**
-  - Stores consecutive identical values as a single value and its count (or range).
+  - Stores consecutive identical values as a single record with its range.
 - **Array of Singly Linked Lists:**
-  - A vector holds the head pointers for each image row.
-  - Each row's data is stored in a singly linked list of `[start, end]` index nodes.
+  - A vector tracks head pointers for each row; each row’s data consists of `[start, end]` index nodes.
 
 ## File Format
 
-The system expects input as a space-separated sequence, starting with the dimensions `<width> <height>`, followed by pixel data rows.
+The system expects input as a space-separated sequence, beginning with `<width> <height>`, followed by pixel data rows.
 
 **Example Input**
 
